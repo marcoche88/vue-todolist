@@ -16,12 +16,13 @@ const app = new Vue({
     el: "#root",
     data: {
         toDoList: [
-            "Fare la spesa",
-            "Andare in farmacia",
-            "Fare benzina",
-            "Pulire casa"
+            "2021-07-29: Fare la spesa",
+            "2021-07-29: Andare in farmacia",
+            "2021-07-29: Fare benzina",
+            "2021-07-29: Pulire casa"
         ],
         newItem: "",
+        newDate: "",
     },
     methods: {
         // rimuove elemento selezionato dalla lista con il metodo splice
@@ -31,10 +32,12 @@ const app = new Vue({
         // aggiunge elemento inserito dall'input alla lista
         addItem() {
             // BONUS validazione input
-            if (this.newItem && this.newItem.trim() !== "") {
-                this.toDoList.push(this.newItem);
+            if (this.newItem && this.newItem.trim() !== "" && this.newDate) {
+                const newItemDate = `${this.newDate}: ${this.newItem}`
+                this.toDoList.push(newItemDate);
             }
             this.newItem = "";
+            this.newDate = "";
         }
     },
 });

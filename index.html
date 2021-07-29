@@ -23,17 +23,18 @@
             <div class="container">
                 <!-- input form -->
                 <div class="row">
-                    <div class="col-6 offset-3">
+                    <div class="col-12 col-lg-6 offset-lg-3">
                         <div class="input-group my-3">
-                            <button v-on:click="addItem" class="btn btn-outline-danger" type="button">Aggiungi</button>
                             <input v-model="newItem" type="text" class="form-control" placeholder="Digita qui...">
+                            <input v-model="newDate" type="date" class="form-control">
+                            <button v-on:click="addItem" class="btn btn-outline-danger" type="button">Aggiungi</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- to do list -->
-                <div class="row my-5 w-50 mx-auto">
-                    <div class="col-12">
+                <div class="row my-5">
+                    <div class="col-12 offset-lg-2 col-lg-8">
                         <h3 v-if="!toDoList.length" class="text-center text-danger mb-4">Nessun elemento presente
                             nella lista</h3>
                         <ul v-else class="list-group">
