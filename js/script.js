@@ -30,7 +30,7 @@ const app = new Vue({
         },
         // aggiunge elemento inserito dall'input alla lista
         addItem() {
-            // validazione input
+            // BONUS validazione input
             if (this.newItem && this.newItem.trim() !== "") {
                 this.toDoList.push(this.newItem);
             }

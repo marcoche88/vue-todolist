@@ -34,8 +34,9 @@
                 <!-- to do list -->
                 <div class="row my-5 w-50 mx-auto">
                     <div class="col-12">
-                        <h3 class="text-center text-danger mb-4">Nessun elemento presente nella lista</h3>
-                        <ul class="list-group">
+                        <h3 v-if="!toDoList.length" class="text-center text-danger mb-4">Nessun elemento presente
+                            nella lista</h3>
+                        <ul v-else class="list-group">
                             <li v-for="(item, index) in toDoList"
                                 class="list-group-item d-flex align-items-center justify-content-between">
                                 <span>{{ item }}</span>
