@@ -9,3 +9,23 @@ BONUS 1: Fare un controllo di validazione per non aggiungere degli item vuoti.
 BONUS 2: Dedicarsi alla parte grafica aggiungendo un tocco personale e gestendo anche
 il mobile.
 */
+
+Vue.config.devtools = true;
+
+const app = new Vue({
+    el: "#root",
+    data: {
+        toDoList: [
+            "Fare la spesa",
+            "Andare in farmacia",
+            "Fare benzina",
+            "Pulire casa"
+        ],
+    },
+    methods: {
+        // rimuove elemento selezionato dalla lista con il metodo splice
+        removeItem(index) {
+            this.toDoList.splice(index, 1);
+        },
+    },
+});

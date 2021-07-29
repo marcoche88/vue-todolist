@@ -18,32 +18,36 @@
         <h1 class="text-center my-3">TO DO LIST</h1>
     </header>
     <!-- main -->
-    <main>
-        <div class="container">
-            <!-- input form -->
-            <div class="row">
-                <div class="col-6 offset-3">
-                    <div class="input-group my-3">
-                        <button class="btn btn-outline-danger" type="button">Aggiungi</button>
-                        <input type="text" class="form-control" placeholder="Digita qui...">
+    <div id="root">
+        <main>
+            <div class="container">
+                <!-- input form -->
+                <div class="row">
+                    <div class="col-6 offset-3">
+                        <div class="input-group my-3">
+                            <button class="btn btn-outline-danger" type="button">Aggiungi</button>
+                            <input type="text" class="form-control" placeholder="Digita qui...">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- to do list -->
+                <div class="row my-5 w-50 mx-auto">
+                    <div class="col-12">
+                        <h3 class="text-center text-danger mb-4">Nessun elemento presente nella lista</h3>
+                        <ul class="list-group">
+                            <li v-for="(item, index) in toDoList"
+                                class="list-group-item d-flex align-items-center justify-content-between">
+                                <span>{{ item }}</span>
+                                <button v-on:click="removeItem(index)" type="button" class="btn-close"
+                                    aria-label="Close"></button>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
-
-            <!-- to do list -->
-            <div class="row my-5 w-50 mx-auto">
-                <div class="col-12">
-                    <h3 class="text-center text-danger">Nessun elemento presente nella lista</h3>
-                    <ul class="list-group">
-                        <li class="list-group-item d-flex align-items-center justify-content-between">
-                            <span>An item</span>
-                            <button type="button" class="btn-close" aria-label="Close"></button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </main>
+        </main>
+    </div>
 
     <script src="./js/script.js"></script>
 </body>
