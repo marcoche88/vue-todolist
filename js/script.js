@@ -21,11 +21,20 @@ const app = new Vue({
             "Fare benzina",
             "Pulire casa"
         ],
+        newItem: "",
     },
     methods: {
         // rimuove elemento selezionato dalla lista con il metodo splice
         removeItem(index) {
             this.toDoList.splice(index, 1);
         },
+        // aggiunge elemento inserito dall'input alla lista
+        addItem() {
+            // validazione input
+            if (this.newItem && this.newItem.trim() !== "") {
+                this.toDoList.push(this.newItem);
+            }
+            this.newItem = "";
+        }
     },
 });
