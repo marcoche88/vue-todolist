@@ -35,16 +35,22 @@ const app = new Vue({
             if (this.newItem && this.newItem.trim() !== "" && this.newDate) {
                 const newItemDate = `${this.newDate}: ${this.newItem}`
                 this.toDoList.push(newItemDate);
+                this.toDoList.sort();
             }
             this.newItem = "";
-            this.newDate = "";
+            this.currentDate();
+        },
+        // inserisce nei data di vue la data corrente
+        currentDate() {
+            const d = new Date();
+            const day = d.getDate();
+            const year = d.getFullYear();
+            const month = ((d.getMonth() + 1).toString().length === 1) ? `0${d.getMonth() + 1}` : d.getMonth() + 1;
+            this.newDate = `${year}-${month}-${day}`;
         }
     },
-    created: function currentDate() {
-        const d = new Date();
-        const day = d.getDate();
-        const year = d.getFullYear();
-        const month = ((d.getMonth() + 1).toString().length === 1) ? `0${d.getMonth() + 1}` : d.getMonth() + 1;
-        this.newDate = `${year}-${month}-${day}`;
+    // richiama la funzione currentDate all'avvio della pagina
+    created() {
+        this.currentDate();
     },
 });
