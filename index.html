@@ -37,7 +37,7 @@
                     <div class="col-12 offset-lg-2 col-lg-8">
                         <h3 v-if="!toDoList.length" class="text-center text-danger mb-4">Nessun elemento presente
                             nella lista</h3>
-                        <ul v-else class="list-group">
+                        <ul v-else class="list-group list-group-flush">
                             <li v-for="(item, index) in toDoList"
                                 class="list-group-item d-flex align-items-center justify-content-between">
                                 <span>{{ item }}</span>
