@@ -33,18 +33,18 @@
                 </div>
 
                 <!-- to do list -->
-                <div class="row my-5">
+                <div id="to-do-section" class="row my-5">
                     <div class="col-12 offset-lg-2 col-lg-8">
-                        <h3 v-if="!toDoList.length" class="text-center text-danger mb-4">Nessun elemento presente
+                        <h3 v-if="!toDoList.length" class="text-center text-danger my-4">Nessun elemento presente
                             nella lista</h3>
-                        <ul v-else class="list-group list-group-flush">
+                        <ul v-else class="list-group list-group-flush my-4">
                             <li v-for="(item, index) in toDoList"
                                 class="list-group-item d-flex align-items-center justify-content-between">
                                 <span>{{ item }}</span>
                                 <button v-on:click="removeItem(index)" type="button" class="btn-close"></button>
                             </li>
                         </ul>
-                        <h3 v-if="toDoList.length" class="text-center text-danger mb-4">La lista contiene {{
+                        <h3 v-if="toDoList.length" class="text-center text-danger my-4">La lista contiene {{
                             toDoList.length }} elementi</h3>
                     </div>
                 </div>
