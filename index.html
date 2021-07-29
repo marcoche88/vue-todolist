@@ -44,6 +44,8 @@
                                 <button v-on:click="removeItem(index)" type="button" class="btn-close"></button>
                             </li>
                         </ul>
+                        <h3 v-if="toDoList.length" class="text-center text-danger mb-4">La lista contiene {{
+                            toDoList.length }} elementi</h3>
                     </div>
                 </div>
             </div>
