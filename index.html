@@ -48,9 +48,15 @@
                         <h3 v-if="!toDoList.length" class="text-center text-danger my-4">Nessun elemento presente
                             nella lista</h3>
                         <ul v-else class="list-group list-group-flush my-4">
-                            <li v-for="(item, index) in toDoList" v-if="filterItem(index)"
+                            <li v-for="(item, index) in toDoList" v-if="filterItem(item.text)"
                                 class="list-group-item d-flex align-items-center justify-content-between">
-                                <span>{{ item }}</span>
+                                <div>
+                                    <i v-on:click="toggleDone(index)"
+                                        v-bind:class="isSelected(index) ? 'fa-check-square' : 'fa-square'"
+                                        class="far"></i>
+                                    <span v-bind:class="isSelected(index) ? 'text-decoration-line-through' : ''">
+                                        {{item.text}}</span>
+                                </div>
                                 <button v-on:click="removeItem(index)" type="button" class="btn-close"></button>
                             </li>
                             <!-- input form in basso -->

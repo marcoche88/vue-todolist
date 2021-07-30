@@ -16,10 +16,10 @@ const app = new Vue({
     el: "#root",
     data: {
         toDoList: [
-            "2021-07-29: Fare la spesa",
-            "2021-07-29: Andare in farmacia",
-            "2021-07-29: Fare benzina",
-            "2021-07-29: Pulire casa"
+            { text: "2021-07-29: Fare la spesa", done: false },
+            { text: "2021-07-29: Andare in farmacia", done: false },
+            { text: "2021-07-29: Fare benzina", done: false },
+            { text: "2021-07-29: Pulire casa", done: false }
         ],
         newItem: "",
         newDate: "",
@@ -36,8 +36,7 @@ const app = new Vue({
             // BONUS validazione input
             if (this.newItem && this.newItem.trim() !== "" && this.newDate) {
                 const newItemDate = `${this.newDate}: ${this.newItem}`
-                this.toDoList.push(newItemDate);
-                this.toDoList.sort();
+                this.toDoList.push({ text: newItemDate, done: false });
                 this.toggleAddInput();
             } else {
                 this.newItem = "";
@@ -59,12 +58,26 @@ const app = new Vue({
             this.currentDate();
         },
         // ricerca sulla lista 
-        filterItem(index) {
+        filterItem(item) {
             if (!this.searchItem || this.searchItem.trim() === "") {
                 return true;
             }
-            const currentItem = this.toDoList[index].toLowerCase();
+            const currentItem = item.toLowerCase();
             return currentItem.includes(this.searchItem.toLowerCase()) ? true : false;
+        },
+        // toggle checkbox 
+        toggleDone(index) {
+            this.toDoList = this.toDoList.map((item, i) => {
+                if (i === index) {
+                    return { text: item.text, done: !item.done };
+                } else {
+                    return item;
+                }
+            })
+        },
+        // ritorna vero o falso se l'elemento della lista è stato selezionato
+        isSelected(index) {
+            return this.toDoList[index].done;
         },
     },
     // richiama la funzione currentDate all'avvio della pagina
