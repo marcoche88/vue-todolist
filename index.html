@@ -82,6 +82,16 @@
                         <h3 v-if="toDoList.length" class="text-center text-danger my-4">La lista contiene {{
                             toDoList.length }} elementi</h3>
                     </div>
+                    <!-- bottoni seleziona tutto, deseleziona tutto e svuota lista -->
+                    <div class="col-12 offset-lg-2 col-lg-8">
+                        <div class="btn-group w-100" role="group" aria-label="Basic example">
+                            <button v-on:click="selectAll" type="button" class="btn btn-success">Seleziona
+                                Tutti</button>
+                            <button v-on:click="deselectAll" type="button" class="btn btn-success">Deseleziona
+                                Tutti</button>
+                            <button v-on:click="deleteAll" type="button" class="btn btn-success">Svuota Lista</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>

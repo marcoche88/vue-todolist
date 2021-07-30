@@ -73,11 +73,24 @@ const app = new Vue({
                 } else {
                     return item;
                 }
-            })
+            });
         },
         // ritorna vero o falso se l'elemento della lista è stato selezionato
         isSelected(index) {
             return this.toDoList[index].done;
+        },
+        selectAll() {
+            this.toDoList = this.toDoList.map((item) => {
+                return { text: item.text, done: true };
+            });
+        },
+        deselectAll() {
+            this.toDoList = this.toDoList.map((item) => {
+                return { text: item.text, done: false };
+            });
+        },
+        deleteAll() {
+            this.toDoList = [];
         },
     },
     // richiama la funzione currentDate all'avvio della pagina
