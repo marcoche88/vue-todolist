@@ -23,6 +23,7 @@ const app = new Vue({
         ],
         newItem: "",
         newDate: "",
+        isActive: true,
     },
     methods: {
         // rimuove elemento selezionato dalla lista con il metodo splice
@@ -36,9 +37,11 @@ const app = new Vue({
                 const newItemDate = `${this.newDate}: ${this.newItem}`
                 this.toDoList.push(newItemDate);
                 this.toDoList.sort();
+                this.toggleAddInput();
+            } else {
+                this.newItem = "";
+                this.currentDate();
             }
-            this.newItem = "";
-            this.currentDate();
         },
         // inserisce nei data di vue la data corrente
         currentDate() {
@@ -47,7 +50,13 @@ const app = new Vue({
             const year = d.getFullYear();
             const month = ((d.getMonth() + 1).toString().length === 1) ? `0${d.getMonth() + 1}` : d.getMonth() + 1;
             this.newDate = `${year}-${month}-${day}`;
-        }
+        },
+        // attiva/disattiva inserimento input 
+        toggleAddInput() {
+            this.isActive = !this.isActive;
+            this.newItem = "";
+            this.currentDate();
+        },
     },
     // richiama la funzione currentDate all'avvio della pagina
     created() {
