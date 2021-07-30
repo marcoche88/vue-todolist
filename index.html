@@ -21,11 +21,12 @@
     <div id="root">
         <main>
             <div class="container">
-                <!-- input form -->
-                <div class="row">
+                <!-- input form in alto-->
+                <div class="row" v-if="!toDoList.length">
                     <div class="col-12 col-lg-6 offset-lg-3">
                         <div class="input-group my-3">
-                            <input v-model="newItem" type="text" class="form-control" placeholder="Digita qui...">
+                            <input v-on:keyup.enter="addItem" v-model="newItem" type="text" class="form-control"
+                                placeholder="Digita qui...">
                             <input v-model="newDate" type="date" class="form-control">
                             <button v-on:click="addItem" class="btn btn-outline-danger" type="button">Aggiungi</button>
                         </div>
@@ -42,6 +43,16 @@
                                 class="list-group-item d-flex align-items-center justify-content-between">
                                 <span>{{ item }}</span>
                                 <button v-on:click="removeItem(index)" type="button" class="btn-close"></button>
+                            </li>
+                            <!-- input form in basso -->
+                            <li class="list-group-item">
+                                <div class="input-group my-3">
+                                    <input v-on:keyup.enter="addItem" v-model="newItem" type="text" class="form-control"
+                                        placeholder="Digita qui...">
+                                    <input v-model="newDate" type="date" class="form-control">
+                                    <button v-on:click="addItem" class="btn btn-outline-danger"
+                                        type="button">Aggiungi</button>
+                                </div>
                             </li>
                         </ul>
                         <h3 v-if="toDoList.length" class="text-center text-danger my-4">La lista contiene {{
