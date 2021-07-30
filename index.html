@@ -25,13 +25,19 @@
         <main>
             <div class="container">
                 <!-- input form in alto-->
-                <div class="row" v-if="!toDoList.length">
-                    <div class="col-12 col-lg-6 offset-lg-3">
+                <div class="row">
+                    <div v-if="!toDoList.length" class="col-12 col-lg-6 offset-lg-3">
                         <div class="input-group my-3">
                             <input v-on:keyup.enter="addItem" v-model="newItem" type="text" class="form-control"
                                 placeholder="Digita qui...">
                             <input v-model="newDate" type="date" class="form-control">
                             <button v-on:click="addItem" class="btn btn-outline-danger" type="button">Aggiungi</button>
+                        </div>
+                    </div>
+                    <div v-else class="col-12 col-lg-6 offset-lg-3">
+                        <div class="input-group mb-3">
+                            <input v-model="searchItem" type="text" class="form-control" placeholder="Cerca...">
+                            <span class="input-group-text"><i class="fas fa-search"></i></span>
                         </div>
                     </div>
                 </div>
@@ -42,7 +48,7 @@
                         <h3 v-if="!toDoList.length" class="text-center text-danger my-4">Nessun elemento presente
                             nella lista</h3>
                         <ul v-else class="list-group list-group-flush my-4">
-                            <li v-for="(item, index) in toDoList"
+                            <li v-for="(item, index) in toDoList" v-if="filterItem(index)"
                                 class="list-group-item d-flex align-items-center justify-content-between">
                                 <span>{{ item }}</span>
                                 <button v-on:click="removeItem(index)" type="button" class="btn-close"></button>

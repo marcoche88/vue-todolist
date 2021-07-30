@@ -24,6 +24,7 @@ const app = new Vue({
         newItem: "",
         newDate: "",
         isActive: true,
+        searchItem: "",
     },
     methods: {
         // rimuove elemento selezionato dalla lista con il metodo splice
@@ -56,6 +57,14 @@ const app = new Vue({
             this.isActive = !this.isActive;
             this.newItem = "";
             this.currentDate();
+        },
+        // ricerca sulla lista 
+        filterItem(index) {
+            if (!this.searchItem || this.searchItem.trim() === "") {
+                return true;
+            }
+            const currentItem = this.toDoList[index].toLowerCase();
+            return currentItem.includes(this.searchItem.toLowerCase()) ? true : false;
         },
     },
     // richiama la funzione currentDate all'avvio della pagina
