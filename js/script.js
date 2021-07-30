@@ -79,16 +79,19 @@ const app = new Vue({
         isSelected(index) {
             return this.toDoList[index].done;
         },
+        // seleziona tutti gli elementi della lista
         selectAll() {
             this.toDoList = this.toDoList.map((item) => {
                 return { text: item.text, done: true };
             });
         },
+        // deseleziona tutti gli elementi della lista
         deselectAll() {
             this.toDoList = this.toDoList.map((item) => {
                 return { text: item.text, done: false };
             });
         },
+        // svuota la lista
         deleteAll() {
             this.toDoList = [];
         },
